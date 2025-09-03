@@ -1,0 +1,39 @@
+<!-- <nav class="navbar">
+    <div class="navbar-left">
+        <img src="assets/logo.png" alt="Logo" class="logo" />
+        <span class="app-title">mrg-flight</span>
+    </div>
+
+    <div class="navbar-right">
+        <div class="profile" (click)="toggleDropdown()" tabindex="0" (blur)="closeDropdown()">
+            <i class="fas fa-user-circle profile-icon"></i>
+            <div class="dropdown" *ngIf="dropdownOpen">
+                <button (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</nav> -->
+
+<nav class="navbar">
+    <div class="navbar-left">
+        <img src="assets/logo.png" alt="Logo" class="logo" ngOptimizedImage />
+        <div class="nav-links">
+            <a routerLink="/flight-form" class="flight-link"><span class="app-title">mrg-flight</span></a>
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <div class="profile" (click)="toggleDropdown()" tabindex="0" (blur)="closeDropdown()">
+            <i class="fas fa-user-circle profile-icon"></i>
+            @if (isAuthResolved() && dropdownOpen()) {
+                <div class="dropdown">
+                    @if (isLoggedIn()) {
+                        <button (click)="logout()">Logout</button>
+                    } @else {
+                        <button routerLink="/login" class="login-btn">Login</button>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</nav>

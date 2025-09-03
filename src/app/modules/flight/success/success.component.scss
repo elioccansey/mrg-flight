@@ -1,0 +1,45 @@
+@use 'sass:color';
+
+$monster-green: #28a745;
+$monster-dark: #1a1a1a;
+$monster-orange: #ff6600;
+
+.success-container {
+  text-align: center;
+  margin-top: 100px;
+
+  h2 {
+    color: $monster-green;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  button {
+    margin: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: color 0.3s ease, background-color 0.3s ease;
+
+    &.primary {
+      background-color: $monster-green;
+      color: white;
+
+      &:hover {
+        background-color: color.adjust($monster-green, $lightness: -10%);
+      }
+    }
+
+    &.logout {
+      background-color: transparent;
+      color: $monster-orange;
+      border: 2px solid transparent; // Optional: to keep button size consistent
+
+      &:hover {
+        color: color.adjust($monster-orange, $lightness: -20%);
+      }
+    }
+  }
+}

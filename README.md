@@ -1,59 +1,94 @@
-# MrgFlight
+# ✈️ MRG Flight App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+This is a simple Angular application that allows users to submit their flight information. It's built with Angular 20 and Firebase, featuring authentication, form submission, and success confirmation.
 
-## Development server
+🌐 **Live Demo:** [https://mrg-flight-71dc9.web.app/](https://mrg-flight-71dc9.web.app/)
 
-To start a local development server, run:
+---
+
+## 🚀 Features
+
+- 🔐 Firebase Authentication
+- 📄 Flight information form (airline, flight number, guests, etc.)
+- ✅ Success confirmation screen
+- 🔓 Auth-guard protected routes
+- 🔐 Logout functionality via profile icon
+- 🎨 Responsive UI with SCSS theming
+- 🌿 Font Awesome icons integration
+- 🔧 Environment-based configuration
+
+---
+
+## 🖼️ Screenshots
+
+### 🔐 Login Page
+
+![Login Screenshot](./screenshots/login.png)
+
+### 🛫 Flight Form
+
+![Flight Form Screenshot](./screenshots/flight-form.png)
+
+### ✅ Success Page
+
+![Success Page Screenshot](./screenshots/success.png)
+
+> 💡 Make sure the images are located inside a `screenshots/` folder at the root level.
+
+---
+
+## 🛠️ Tech Stack
+
+- [Angular 20](https://angular.io/)
+- [Firebase Authentication](https://firebase.google.com/products/auth)
+- [Firebase Hosting](https://firebase.google.com/products/hosting)
+- [Font Awesome](https://fontawesome.com/)
+- [SCSS](https://sass-lang.com/)
+
+---
+
+## ⚙️ Environment Setup
+
+Configure your environment variables in the appropriate files:
+
+### `src/environments/environment.ts`
+
+```ts
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: 'YOUR_DEV_API_KEY',
+    authDomain: 'your-project.firebaseapp.com',
+    projectId: 'your-project-id',
+    storageBucket: 'your-project.appspot.com',
+    messagingSenderId: 'your-sender-id',
+    appId: 'your-app-id',
+  },
+  backend: {
+    url: 'https://your-dev-backend-url.com',
+    token: 'dev-token',
+    candidate: 'Your Name',
+  },
+};
+```
+
+## 🧪 Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the app in development mode:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Test production build locally (after building):
 
 ```bash
-ng generate component component-name
+ng build --configuration=production
+npx serve -s dist/mrg-flight/browser
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

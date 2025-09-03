@@ -1,0 +1,109 @@
+@use 'sass:color';
+
+$monster-green: #28a745;
+$monster-dark: #1a1a1a;
+$monster-orange: #ff6600;
+
+.flight-form-container {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 2rem;
+  border: 1px solid $monster-green;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba($monster-dark, 0.1);
+
+  h2 {
+    text-align: center;
+    color: $monster-dark;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: $monster-dark;
+  }
+
+  input,
+  textarea,
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid color.adjust($monster-green, $alpha: -0.5);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: $monster-green;
+      outline: none;
+      box-shadow: 0 0 6px color.adjust($monster-green, $alpha: -0.7);
+    }
+    &.invalid {
+      border-color: #ff3300; // red for invalid
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: $monster-green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color.adjust($monster-green, $lightness: -10%);
+    }
+
+    &:disabled {
+      background-color: color.adjust($monster-green, $lightness: 30%);
+      cursor: not-allowed;
+    }
+  }
+
+  .success {
+    margin-top: 1rem;
+    color: $monster-green;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .error {
+    margin-top: 1rem;
+    color: $monster-orange;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .form-input {
+    border: 1px solid #28a745; // green by default
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.3s;
+
+    &.invalid {
+      border-color: #ff3300; // red for invalid
+    }
+  }
+
+  .error-message {
+    color: #ff3300;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+}
