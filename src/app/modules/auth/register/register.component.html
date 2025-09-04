@@ -1,0 +1,29 @@
+<div class="register-container">
+    <h2>Create an Account</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" required class="form-input"
+            [class.invalid]="registerForm.controls.email.invalid && registerForm.controls.email.touched" />
+        @if (registerForm.controls.email.invalid && registerForm.controls.email.touched) {
+        <div class="error-message">Email is required</div>
+        }
+
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" required class="form-input"
+            [class.invalid]="registerForm.controls.password.invalid && registerForm.controls.password.touched" />
+        @if (registerForm.controls.password.invalid && registerForm.controls.password.touched) {
+        <div class="error-message">Password is required (min 6 characters)</div>
+        }
+
+        <button type="submit" [disabled]="registerForm.invalid">Register</button>
+        <button type="button" (click)="signInWithGoogle()" class="google-btn">Sign up with Google</button>
+
+        @if (errorMessage()) {
+        <p class="error">{{ errorMessage() }}</p>
+        }
+    </form>
+    <div class="login-link">
+        Already have an account?
+        <a routerLink="/login">Sign in</a>
+    </div>
+</div>

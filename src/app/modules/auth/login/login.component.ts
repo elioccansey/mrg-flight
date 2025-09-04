@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, signal, computed, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { AuthService } from '../auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule, RouterModule]
 })
 export class LoginComponent {
   loginForm = inject(FormBuilder).group({
@@ -41,6 +41,12 @@ export class LoginComponent {
     const email = this.loginForm.value.email ?? '';
     const password = this.loginForm.value.password ?? '';
     this.authService.login(email, password)
+      .then(() => this.router.navigate(['/flight-form']))
+      .catch(err => this.errorMessage.set(this.getFriendlyErrorMessage(err)));
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signInWithGoogle()
       .then(() => this.router.navigate(['/flight-form']))
       .catch(err => this.errorMessage.set(this.getFriendlyErrorMessage(err)));
   }

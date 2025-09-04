@@ -1,5 +1,5 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, signOut, User } from '@angular/fire/auth';
+import { Injectable, inject, signal, computed } from '@angular/core';
+import { Auth, signInWithEmailAndPassword, signOut, User, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -41,6 +41,22 @@ export class AuthService {
       this.userSignal.set(null);
       this.router.navigate(['/login']);
     });
+  }
+
+  register(email: string, password: string): Promise<User> {
+    return createUserWithEmailAndPassword(this.auth, email, password)
+      .then(cred => {
+        this.userSignal.set(cred.user);
+        return cred.user;
+      });
+  }
+
+  signInWithGoogle(): Promise<User> {
+    return signInWithPopup(this.auth, new GoogleAuthProvider())
+      .then(cred => {
+        this.userSignal.set(cred.user);
+        return cred.user;
+      });
   }
 
   get user() {

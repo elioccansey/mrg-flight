@@ -1,45 +1,51 @@
 <div class="flight-form-container">
     <h2>Enter Flight Details</h2>
-    <form [formGroup]="flightForm" (ngSubmit)="onSubmit()">
+    @if (loading()) {
+    <div class="loading-overlay">
+        <div class="spinner"></div>
+        <span>Submitting...</span>
+    </div>
+    }
+    <form [formGroup]="flightForm" (ngSubmit)="onSubmit()" [class.form-blur]="loading()">
         <label for="airline">Airline</label>
         <input id="airline" type="text" formControlName="airline" required class="form-input"
             [class.invalid]="flightForm.controls.airline.invalid && flightForm.controls.airline.touched" />
         @if (flightForm.controls.airline.invalid && flightForm.controls.airline.touched) {
-        <div class="error-message">Required</div>
+        <div class="error-message">Airline is required</div>
         }
 
         <label for="arrivalDate">Arrival Date</label>
         <input id="arrivalDate" type="date" formControlName="arrivalDate" required class="form-input"
             [class.invalid]="flightForm.controls.arrivalDate.invalid && flightForm.controls.arrivalDate.touched" />
         @if (flightForm.controls.arrivalDate.invalid && flightForm.controls.arrivalDate.touched) {
-        <div class="error-message">Required</div>
+        <div class="error-message">Arrival Date is required</div>
         }
 
         <label for="arrivalTime">Arrival Time</label>
         <input id="arrivalTime" type="time" formControlName="arrivalTime" required class="form-input"
             [class.invalid]="flightForm.controls.arrivalTime.invalid && flightForm.controls.arrivalTime.touched" />
         @if (flightForm.controls.arrivalTime.invalid && flightForm.controls.arrivalTime.touched) {
-        <div class="error-message">Required</div>
+        <div class="error-message">Arrival Time is required</div>
         }
 
         <label for="flightNumber">Flight Number</label>
         <input id="flightNumber" type="text" formControlName="flightNumber" required class="form-input"
             [class.invalid]="flightForm.controls.flightNumber.invalid && flightForm.controls.flightNumber.touched" />
         @if (flightForm.controls.flightNumber.invalid && flightForm.controls.flightNumber.touched) {
-        <div class="error-message">Required</div>
+        <div class="error-message">Flight Number is required</div>
         }
 
         <label for="numOfGuests">Number of Guests</label>
         <input id="numOfGuests" type="number" min="1" formControlName="numOfGuests" required class="form-input"
             [class.invalid]="flightForm.controls.numOfGuests.invalid && flightForm.controls.numOfGuests.touched" />
         @if (flightForm.controls.numOfGuests.invalid && flightForm.controls.numOfGuests.touched) {
-        <div class="error-message">Required</div>
+        <div class="error-message">Number of Guests is required</div>
         }
 
         <label for="comments">Comments (Optional)</label>
         <textarea id="comments" formControlName="comments" class="form-input"></textarea>
 
-        <button type="submit" [disabled]="flightForm.invalid">Submit</button>
+        <button type="submit" [disabled]="flightForm.invalid || loading()">Submit</button>
     </form>
 
     @if (successMessage()) {

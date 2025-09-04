@@ -1,44 +1,12 @@
-// import { Component } from '@angular/core';
-// import { Router } from '@angular/router';
-// import { AuthService } from '../../../modules/auth/auth.service';
-// import { NgIf } from '@angular/common';
-
-// @Component({
-//   selector: 'app-navbar',
-//   templateUrl: './navbar.component.html',
-//   styleUrls: ['./navbar.component.scss'],
-//   standalone: true,
-//   imports: [NgIf],
-// })
-// export class NavbarComponent {
-//   dropdownOpen = false;
-
-//   constructor(private authService: AuthService, private router: Router) { }
-
-//   toggleDropdown() {
-//     this.dropdownOpen = !this.dropdownOpen;
-//   }
-
-//   closeDropdown() {
-//      setTimeout(() => {
-//       this.dropdownOpen = false;
-//     }, 200);
-//   }
-
-//   logout() {
-//     this.authService.logout().then(() => {
-//       this.router.navigate(['/login']);
-//     });
-//   }
-// }
 import { Component, ChangeDetectionStrategy, signal, computed, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../modules/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'role': 'navigation'

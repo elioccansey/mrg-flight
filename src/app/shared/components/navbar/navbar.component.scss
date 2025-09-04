@@ -29,6 +29,13 @@ $monster-orange: #ff6600;
       font-weight: 700;
       color: $monster-green;
       text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .flight-link {
+      text-decoration: none;
+      border-bottom: none;
     }
   }
 
@@ -41,8 +48,8 @@ $monster-orange: #ff6600;
       cursor: pointer;
 
       .profile-icon {
-        font-size: 36px; // Bigger size
-        color: $monster-green; // Green color
+        font-size: 36px; 
+        color: $monster-green; 
         transition: color 0.3s ease;
 
         &:hover {

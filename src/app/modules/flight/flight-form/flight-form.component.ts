@@ -27,6 +27,7 @@ export class FlightFormComponent {
 
   successMessage = signal<string>('');
   errorMessage = signal<string>('');
+  loading = signal(false);
 
   private getFriendlyErrorMessage(error: unknown): string {
     if (typeof error === 'object' && error) {
@@ -59,9 +60,9 @@ export class FlightFormComponent {
   onSubmit(): void {
     this.successMessage.set('');
     this.errorMessage.set('');
-
     if (this.flightForm.invalid) return;
 
+    this.loading.set(true);
     const payload: FlightInfoPayload = this.flightForm.value as FlightInfoPayload;
 
     this.flightService.submitFlightInfo(payload).subscribe({
@@ -76,9 +77,11 @@ export class FlightFormComponent {
           numOfGuests: 1,
           comments: ''
         });
+        this.loading.set(false);
       },
       error: (err: unknown) => {
         this.errorMessage.set('Failed to submit flight details: ' + this.getFriendlyErrorMessage(err));
+        this.loading.set(false);
       }
     });
   }
