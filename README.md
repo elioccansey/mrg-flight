@@ -25,6 +25,10 @@ This is a simple Angular application that allows users to submit their flight in
 
 ![Login Screenshot](./screenshots/login.png)
 
+### 🔐 Register Page
+
+![Register Screenshot](./screenshots/register.png)
+
 ### 🛫 Flight Form
 
 ![Flight Form Screenshot](./screenshots/flight-form.png)
@@ -32,8 +36,6 @@ This is a simple Angular application that allows users to submit their flight in
 ### ✅ Success Page
 
 ![Success Page Screenshot](./screenshots/success.png)
-
-> 💡 Make sure the images are located inside a `screenshots/` folder at the root level.
 
 ---
 
@@ -86,7 +88,7 @@ Run the app in development mode:
 ng serve
 ```
 
-Test production build locally (after building):
+Test production build locally :
 
 ```bash
 ng build --configuration=production
